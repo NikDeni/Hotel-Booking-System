@@ -8,42 +8,50 @@ class Hotel:
         self.bookings = []
 
     def show_available_rooms(self):
-        is_occupied_all = True
-        for room in self.rooms:
-            if not room.is_occupied:
-                is_occupied_all = False
-                print(room)
+        available_rooms = [room for room in self.rooms if not room.is_occupied]
         
-        if is_occupied_all:
+        if not available_rooms:
             print("Все номера заняты")
+        else:
+            for room in available_rooms:
+                print(room)
+
 
     def book_room(self, number, guest_name, nights):
         room = find_number(number=number, rooms=self.rooms)
+        
+        if not room:
+            raise ValueError(f"Номер {number} не найден")
+        
+        if room.is_occupied:
+            raise ValueError(f"Номер {number} уже занят")
+        
         book = Booking(name_guest=guest_name, nights=nights, room=room)
         self.bookings.append(book)
-        if room:
-            room.is_occupied = True
+        room.is_occupied = True
 
         return book
 
     def show_all_bookings(self):
-        for booking in self.bookings:
-            print(booking)
-        
         if not self.bookings:
             print("Броней нет")
+        else:
+            for booking in self.bookings:
+                print(booking)
 
     def check_out(self, number):
         room = find_number(number=number, rooms=self.rooms)
-        booking = next((booking for booking in self.bookings if booking.room == room), None)
+        
+        if not room:
+            raise ValueError(f"Номер {number} не найден")
+        
+        booking = next((b for b in self.bookings if b.room == room), None)
+        
+        if not booking:
+            raise ValueError(f"Нет брони для номера {number}")
+        
         self.bookings.remove(booking)
-        if room:
-            room.is_occupied = False
+        room.is_occupied = False
 
     def __str__(self) -> str:
-        result_str = ''
-        for room in self.rooms:
-            result_str += str(room)
-            result_str += '\n'
-        
-        return result_str
+        return '\n'.join(str(room) for room in self.rooms)
