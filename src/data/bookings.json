@@ -1,0 +1,22 @@
+[
+    {
+        "name_guest": "Nikolay",
+        "room": {
+            "number": 102,
+            "category": "VIP",
+            "price": 100.0,
+            "is_occupied": true
+        },
+        "nights": 2
+    },
+    {
+        "name_guest": "Misha",
+        "room": {
+            "number": 103,
+            "category": "Family",
+            "price": 70.0,
+            "is_occupied": true
+        },
+        "nights": 6
+    }
+]

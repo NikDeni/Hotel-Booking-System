@@ -1,5 +1,5 @@
 from models.hotel import Hotel
-from models.room import Room
+from models.booking import Booking
 from utils.services import *
 
 
@@ -18,6 +18,8 @@ while True:
             hotel.check_out(number=102)
             print("Бронь отменена")
         case 4:
+            hotel.show_all_bookings()
+        case 5:
             break
         case _:
             print("Некорректный ввод данных. Попробуйте ещё.")
