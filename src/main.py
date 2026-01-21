@@ -2,14 +2,8 @@ from models.hotel import Hotel
 from models.room import Room
 from utils.services import *
 
-room101 = Room(number=101, category="Standart", price=30)
-room102 = Room(number=102, category="VIP", price=100)
-room103 = Room(number=103, category="Family", price=70)
-rooms_Hotel = [room101, room102, room103]
 
-hotel = Hotel(rooms=rooms_Hotel)
-
-
+hotel = Hotel()
 
 while True:
     show_menu()

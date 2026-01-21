@@ -3,8 +3,8 @@ from models.booking import Booking
 from utils.services import *
 
 class Hotel:
-    def __init__(self, rooms: list[Room]) -> None:
-        self.rooms = rooms
+    def __init__(self) -> None:
+        self.rooms = load_from_json(model_class=Room, file_path='rooms.json')
         self.bookings = []
 
     def show_available_rooms(self):

@@ -1,0 +1,20 @@
+[
+    {
+        "number": 101,
+        "category": "Standart",
+        "price": 30.0,
+        "is_occupied": false
+    },
+    {
+        "number": 102,
+        "category": "VIP",
+        "price": 100.0,
+        "is_occupied": false
+    },
+    {
+        "number": 103,
+        "category": "Family",
+        "price": 70.0,
+        "is_occupied": false
+    }
+]
